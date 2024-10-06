@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Đảm bảo trang tương thích với các thiết bị di động -->
+    <title>Bảng điều khiển Admin</title>
+
+    <!-- Bootstrap CSS: Thư viện để xây dựng giao diện nhanh và nhất quán -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <!-- Font Awesome: Thư viện biểu tượng để thêm các icon (biểu tượng) vào trang -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- CSS tùy chỉnh -->
+    <style>
+      /* Đặt màu nền tổng thể cho trang */
+      body {
+        background-color: #e9ecef; /* Màu nền sáng */
+      }
+
+      /* Hiệu ứng và màu cho tiêu đề chính */
+      .header-text {
+        color: #007bff; /* Màu xanh Bootstrap cho tiêu đề */
+        animation: slideIn 1s ease-in-out; /* Hiệu ứng khi xuất hiện tiêu đề */
+      }
+
+      /* Hiệu ứng animation cho tiêu đề */
+      @keyframes slideIn {
+        from {
+          opacity: 0; /* Bắt đầu với độ mờ (không thấy) */
+          transform: translateY(-20px); /* Xuất hiện từ vị trí trên cao */
+        }
+        to {
+          opacity: 1; /* Kết thúc với độ mờ đầy đủ */
+          transform: translateY(0); /* Trở về vị trí ban đầu */
+        }
+      }
+
+      /* Tạo phong cách cho liên kết điều hướng (sidebar) */
+      .nav-link {
+        font-weight: bold; /* Chữ đậm cho liên kết */
+        color: #495057; /* Màu chữ ban đầu */
+        transition: background-color 0.3s ease, color 0.3s ease; /* Hiệu ứng khi hover */
+      }
+
+      /* Hiệu ứng khi di chuột qua các liên kết điều hướng */
+      .nav-link:hover {
+        background-color: #007bff; /* Đổi nền thành màu xanh khi hover */
+        color: white; /* Đổi chữ thành màu trắng */
+      }
+
+      /* Tạo bố cục và hiệu ứng cho các khối nội dung chính */
+      #content-area div {
+        margin-bottom: 20px; /* Khoảng cách giữa các khối nội dung */
+        background: white; /* Màu nền trắng cho khối nội dung */
+        padding: 20px; /* Thêm khoảng trống bên trong khối */
+        border-radius: 10px; /* Bo góc cho khối */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng bóng nhẹ */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng khi hover */
+      }
+
+      /* Hiệu ứng khi di chuột qua các khối nội dung */
+      #content-area div:hover {
+        transform: translateY(-10px); /* Nâng khối lên một chút khi hover */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng bóng đổ khi hover */
+      }
+
+      /* Tạo phong cách cho các biểu tượng (icon) */
+      .icon {
+        font-size: 30px; /* Kích thước biểu tượng lớn */
+        color: #007bff; /* Màu xanh của biểu tượng */
+        margin-right: 10px; /* Thêm khoảng cách giữa biểu tượng và văn bản */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container-fluid mt-5">
+      <!-- Tiêu đề trang chính -->
+      <h1 class="text-center mb-4 header-text">
+        <!-- Biểu tượng trước tiêu đề -->
+        <i class="fas fa-user-shield"></i> Chào mừng đến với trang quản trị hệ
+        thống của Admin
+      </h1>
+
+      <div class="row">
+        <!-- Thanh điều hướng: Chiếm 1/4 chiều rộng của trang -->
+        <nav class="col-md-3">
+          <div class="list-group">
+            <!-- Mục điều hướng 1: Trang quản trị -->
+            <a
+              class="list-group-item list-group-item-action nav-link"
+              href="/admin"
+            >
+              <!-- Biểu tượng kèm theo -->
+              <i class="fas fa-tachometer-alt icon"></i> Trang Quản Trị
+            </a>
+            <!-- Mục điều hướng 2: Quản lý người dùng -->
+            <a
+              class="list-group-item list-group-item-action nav-link"
+              href="/admin/user"
+            >
+              <i class="fas fa-users icon"></i> Quản Lý Người Dùng
+            </a>
+            <!-- Mục điều hướng 3: Quản lý sản phẩm -->
+            <a
+              class="list-group-item list-group-item-action nav-link"
+              href="/admin/product"
+            >
+              <i class="fas fa-box icon"></i> Quản Lý Sản Phẩm
+            </a>
+            <!-- Mục điều hướng 4: Quản lý đơn hàng -->
+            <a
+              class="list-group-item list-group-item-action nav-link"
+              href="/admin/order"
+            >
+              <i class="fas fa-shopping-cart icon"></i> Quản Lý Đơn Hàng
+            </a>
+          </div>
+        </nav>
+
+        <!-- Khu vực nội dung chính: Chiếm 3/4 chiều rộng của trang -->
+        <div class="col-md-9">
+          <div id="content-area">
+            <!-- Phần hiển thị số lượng người dùng -->
+            <div>
+              <h5>
+                <i class="fas fa-user-friends icon"></i> Số lượng người dùng
+              </h5>
+              <!-- Sử dụng Thymeleaf để hiển thị số lượng người dùng (dữ liệu động) -->
+              <div th:if="${userQuantity}" th:text="${userQuantity}"></div>
+            </div>
+
+            <!-- Phần hiển thị số lượng sản phẩm -->
+            <div>
+              <h5><i class="fas fa-boxes icon"></i> Số lượng sản phẩm</h5>
+              <!-- Hiển thị số lượng sản phẩm (dữ liệu động) -->
+              <div
+                th:if="${productQuantity}"
+                th:text="${productQuantity}"
+              ></div>
+            </div>
+
+            <!-- Phần hiển thị số lượng đơn hàng -->
+            <div>
+              <h5><i class="fas fa-receipt icon"></i> Số lượng đơn hàng</h5>
+              <!-- Hiển thị số lượng đơn hàng (dữ liệu động) -->
+              <div th:if="${orderQuantity}" th:text="${orderQuantity}"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Các script cần thiết cho Bootstrap và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"></script>
+  </body>
+</html>

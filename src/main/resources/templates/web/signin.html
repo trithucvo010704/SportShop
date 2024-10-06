@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-in Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- Thêm FontAwesome để dùng icon -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      integrity="sha512-dyD8P6yhaWOmDfM3UVY2qYTJ6Hox5oAM5wrKsIxEkHsGxVE/yRHT76hyDVsddMmV/uY3OvgghyIX3Uqa8RXSA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        background-color: #f0f2f5;
+        font-family: "Poppins", sans-serif;
+      }
+
+      /* Hiệu ứng box shadow và border radius */
+      .card {
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        border: none;
+        overflow: hidden;
+      }
+
+      /* Header của thẻ, sử dụng gradient và bo tròn */
+      .card-header {
+        background: linear-gradient(135deg, #007bff, #00aaff);
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        color: white;
+        text-align: center;
+        padding: 20px;
+      }
+
+      /* Căn chỉnh và khoảng cách giữa các input */
+      .form-control {
+        border-radius: 30px;
+        padding-left: 40px;
+        padding-right: 15px;
+        height: 50px;
+      }
+
+      .input-group-text {
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+      }
+
+      /* Hiệu ứng hover và bo tròn cho nút */
+      .btn-primary,
+      .btn-secondary {
+        border-radius: 30px;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        width: 100px;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+
+      .btn-secondary {
+        background-color: #6c757d;
+      }
+
+      .btn-secondary:hover {
+        background-color: #565e64;
+        transform: scale(1.05);
+      }
+
+      /* Icon trong các trường input */
+      .input-icon {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #007bff;
+      }
+
+      /* Định dạng form */
+      .form-container {
+        position: relative;
+        margin-bottom: 20px;
+      }
+
+      /* Tùy chỉnh thêm cho nút và căn chỉnh form */
+      .card-body {
+        padding: 30px;
+      }
+
+      .card h4 {
+        margin-bottom: 0;
+        font-size: 24px;
+        font-weight: 600;
+      }
+
+      .btn-wrapper {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+      }
+
+      /* Tùy chỉnh chiều rộng của form */
+      .col-md-6 {
+        max-width: 500px;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mb-0">Sign-in</h4>
+            </div>
+            <div class="card-body">
+              <form
+                th:action="@{/sign-in}"
+                th:object="${newUser}"
+                method="POST"
+              >
+                <!-- Thông báo lỗi -->
+                <div th:if="${message}" class="alert alert-danger" role="alert">
+                  <span th:text="${message}"></span>
+                </div>
+
+                <!-- Trường Username với icon -->
+                <div class="form-container">
+                  <span class="input-icon"><i class="fas fa-user"></i></span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="username"
+                    name="username"
+                    placeholder="Enter username"
+                    required
+                  />
+                </div>
+
+                <!-- Trường Password với icon -->
+                <div class="form-container">
+                  <span class="input-icon"><i class="fas fa-lock"></i></span>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    required
+                  />
+                </div>
+
+                <!-- Nút hành động -->
+                <div class="btn-wrapper">
+                  <button type="submit" class="btn btn-primary">Login</button>
+                  <a href="/home" class="btn btn-secondary">Home</a>
+                  <a href="/login" class="btn btn-secondary">Login</a>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thêm Bootstrap JS và jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
